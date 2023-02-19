@@ -27,6 +27,7 @@ public class PublisherTest {
 
         // 3.创建队列
         String queueName = "simple.queue";
+        //如果队列存在则不创建，不存在则 创建
         channel.queueDeclare(queueName, false, false, false, null);
 
         // 4.发送消息
