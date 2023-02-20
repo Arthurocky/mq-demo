@@ -76,5 +76,29 @@ public class SpringAmqpTest {
         rabbitTemplate.convertAndSend(exchange, routingKey, msg);
     }
 
+    /**
+     * Topic交换机<br>
+     * "#"-->表示一个或多个<br>
+     * "*"--表示一个<br>
+     */
+    @Test
+    public void testSendTopicMsg1(){
+        // 队列名称=
+        String exchangeName = "itcast.topic";
+        // 消息
+        String message = "钓鱼岛是中国的";
+        rabbitTemplate.convertAndSend(exchangeName, "china.#", message);
+    }
+
+    @Test
+    public void testSendTopicMsg2(){
+        // 队列名称=
+        String exchangeName = "itcast.topic";
+        // 消息
+        String message = "你好";
+        rabbitTemplate.convertAndSend(exchangeName, "#.new", message);
+    }
+
+
 
 }
