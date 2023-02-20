@@ -8,3 +8,8 @@ spring:
     virtual-host: / # 虚拟主机
     username: itcast # 用户名
     password: 123321 # 密码
+    #能者多劳设置 如果不添加则为平均分配
+    listener:
+      simple:
+        #消息预取机制，批量消费，默认为250个
+        prefetch: 1  #每次只能获取一条消息，处理完成才能获取下一个消息
