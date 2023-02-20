@@ -21,9 +21,20 @@ public class SpringAmqpTest {
 
 
     // junit 4的版本(包比较短)时需要配置@RunWith注解, 版本>5(包名比较长)则不需要
+    //Work queues，也被称为（Task queues），任务模型。简单来说就是**让多个消费者绑定到一个队列，共同消费队列中的消息**。
     @Test
     public void testSendNormalMsg(){
         rabbitTemplate.convertAndSend("simple.queue", "Hello amqp");
+    }
+
+    //要模拟多个消费者绑定同一个队列，我们在consumertestWorkQueue服务的SpringRabbitListener中添加2个新的方法：
+    //平均分配：奇数为消费者1处理，则偶数为消费者2处理
+    @Test
+    public void testSendWorkMsg(){
+        for (int i = 0; i < 50; i++) {
+            //Ctrl+Shift + 上下
+            rabbitTemplate.convertAndSend("simple.queue", "第" + (i+1) + "个消息");
+        }
     }
 
 }

@@ -4,7 +4,7 @@ package cn.itcast.mq.listen;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class SpringRabbitListener {
     // queues中的队列名必须与控制台的队列名一致，严格区分大小写
     @RabbitListener(queues = "simple.queue")
