@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.boot.test.context.SpringBootTest;
 import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -99,6 +101,18 @@ public class SpringAmqpTest {
         rabbitTemplate.convertAndSend(exchangeName, "#.new", message);
     }
 
+    /**
+     * 消息转换器
+     */
+    //
+    @Test
+    public void testSendObjectMsg(){
+        Map<String,Object> map = new HashMap<>();
+        map.put("name","jacky chen");
+        map.put("age", 60);
+
+        rabbitTemplate.convertAndSend("object.queue", map);
+    }
 
 
 }

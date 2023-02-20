@@ -4,7 +4,7 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.annotation.RabbitListeners;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class FanoutListener {
 
     @RabbitListener(queues = "fanout.queue1")
