@@ -4,7 +4,7 @@ package cn.itcast.mq.listen;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class WorkQueueListener {
 
     @RabbitListener(queues = "simple.queue")

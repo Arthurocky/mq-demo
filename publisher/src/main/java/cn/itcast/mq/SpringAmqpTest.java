@@ -37,4 +37,19 @@ public class SpringAmqpTest {
         }
     }
 
+
+    /**
+     * 广播模式
+     */
+    @Test
+    public void testSendToFanoutExchange() {
+        // 队列名称
+        String exchange = "itcast.fanout";
+        // 消息
+        String msg = "hello, everyone!";
+        rabbitTemplate.convertAndSend(exchange, "", msg);
+    }
+
+
+
 }
