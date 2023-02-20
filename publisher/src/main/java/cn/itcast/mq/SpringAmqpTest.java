@@ -50,6 +50,31 @@ public class SpringAmqpTest {
         rabbitTemplate.convertAndSend(exchange, "", msg);
     }
 
+    /**
+     * 路由模式
+     */
+    @Test
+    public void testSendToFanoutExchangeTest1() {
+        // 队列名称
+        String exchange = "itcast.direct";
+        String routingKey = "red";
+        // 消息
+        String msg = "hello, Loki!";
+        rabbitTemplate.convertAndSend(exchange, routingKey, msg);
+    }
+
+    /**
+     * Direct交换机
+     */
+    @Test
+    public void testSendToFanoutExchangeTest2() {
+        // 队列名称
+        String exchange = "itcast.direct";
+        String routingKey = "blue";
+        // 消息
+        String msg = "hello, Arthur!";
+        rabbitTemplate.convertAndSend(exchange, routingKey, msg);
+    }
 
 
 }
